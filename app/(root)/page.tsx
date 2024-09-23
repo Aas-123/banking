@@ -29,7 +29,7 @@ const Home = () => {
 
         user = {loggedIn}
         transcations={[]}
-        banks={[{} , {} ]}
+        banks={[{currentBalance:123.50 } , {currentBalance:163.50} ]}
         
          />
     </section>
