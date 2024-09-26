@@ -24,13 +24,14 @@ import { authformSchema } from '@/lib/utils';
 import SignUp from '@/app/(auth)/sign-up/page';
 import SignIn from '@/app/(auth)/sign-in/page';
 import { useRouter } from 'next/navigation';
-import { Signin, Signup } from '@/lib/actions/user.action';
+import { getLoggedInUser, Signin, Signup } from '@/lib/actions/user.action';
 
 
 const AuthForm = ({type}: {type: string}) => {
     const router = useRouter();
     const [user, setUser] = useState(null);
     const [isLoading, setIsLoading  ] = useState(false);
+   
 
     const formSchema = authformSchema(type);
 
@@ -57,12 +58,11 @@ const AuthForm = ({type}: {type: string}) => {
        const response = await Signin({
         email: data.email,
         password: data.password,
-        })d
+        })
 
       if(response) router.push('/')
-     }
+      }
     }
-  }
     catch(error){
       console.log(error);
     } finally {
